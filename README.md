@@ -3,7 +3,7 @@
 An API based on the [120 years of Olympic history: athletes and results Dataset](https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results) powered by Django REST Framework
 
 ## Instalation
----
+
 Create a virtual enviroment, clone this repository and install dependecies (on linux):
 ```bash
 python3 -m venv olympics-api
@@ -22,8 +22,8 @@ python manage.py drf_create_token your-username # This keep this token secret
 
 Import the dataset information to the database, use the files provided by the dataset above:
 ```bash
-python manage.py import_noc noc_regions.csv
-python manage.py import_events athlete_events.csv #This may take a while
+python manage.py import_noc dataset/noc_regions.csv
+python manage.py import_events dataset/athlete_events.csv #This may take a while
 ```
 
 Once all the data is in the up you can start the server and test it:
@@ -32,7 +32,7 @@ python manage.py runserver
 curl http://127.0.0.1:8000/events?athlete_NOC=105&sport=2 # This will retrieve all the Judo events where a Japanese athlete competed
 ```
 ## Usage
----
+
 This API implements all the basic http methods to interact with the database(GET, PUT, DELETE, POST and PATCH). Althought, to be able to change any data o must be autheticated. It is recommended to use the token generated earlier in the request headers, as the example:
 ```bash
 curl -H 'Authorization: Token your-auth-token' http://127.0.0.1:8000/sports
@@ -44,7 +44,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"your-username"
 Session and Http authentication are also valid.
 
 ## Endpoints
----
+
 Each endpoint will provide give access to an especific part of the data structure of the dataset with different filter options. The main one is the */events*, which is able to provide the complete information of the event and related data structures.
 
 You can create new instances of a datastucture using the POST method. This example will create a new medal with the name "Foo":
@@ -66,7 +66,7 @@ The allowed method are:
 | PATCH  | Partially updates an instance's data | Instance only    |
 
 ### List
-
+---
 In all endpoints, if no instance is specified when called, it will return an unfiltered list with all its contents with 100 results per page by default. The received data is structured as follows:
 | Key      | Value                                               |
 |----------|-----------------------------------------------------|
@@ -84,6 +84,7 @@ The following parameters are allowed in all the endpoints:
 In addition to these, each endpoint has its own filters. See below for more info.
 
 ### */events*
+---
 This endpoint is responsable for the Events in the database. Events are singular participations of an athlete in an Olympic competition. The received data is structured as follows:
 
 | Key          | Value                                                                                       |
@@ -106,6 +107,7 @@ You can use this keys as parameters for filtering the results. In addition, the 
 | medal        | int  | Instance id    |
 
 ### */nocs*
+---
 This endpoint is responsable for the NOCs(National Olympic Committees) in the database. NOCs are the organizations responsable for promoting the Olympic Games in a country. The received data is structured as follows:
 
 | Key    | Value                                             |
@@ -118,6 +120,7 @@ This endpoint is responsable for the NOCs(National Olympic Committees) in the da
 You can use this keys as parameters for filtering the results.
 
 ### */sports*
+---
 This endpoint is responsable for the Sports in the database. The received data is structured as follows:
 
 | Key  | Value                           |
@@ -128,6 +131,7 @@ This endpoint is responsable for the Sports in the database. The received data i
 You can use this keys as parameters for filtering the results.
 
 ### */games*
+---
 This endpoint is responsable for the Games in the database. Games are specific editions of the Olympic Games. The received data is structured as follows:
 
 | Key    | Value                           |
@@ -140,6 +144,7 @@ This endpoint is responsable for the Games in the database. Games are specific e
 You can use this keys as parameters for filtering the results.
 
 ### */athletes*
+---
 This endpoint is responsable for the Athletes in the database. The received data is structured as follows:
 
 | Key    | Value                           |
@@ -153,6 +158,7 @@ This endpoint is responsable for the Athletes in the database. The received data
 You can use this keys as parameters for filtering the results.
 
 ### */competitions*
+---
 This endpoint is responsable for the Competitions in the database. Competitions specific modalities of a particular Sport. The received data is structured as follows:
 
 | Key    | Value                                                                              |
@@ -164,6 +170,7 @@ This endpoint is responsable for the Competitions in the database. Competitions 
 You can use this keys as parameters for filtering the results.
 
 ### */medals*
+---
 This endpoint is responsable for the medal types in the database. The received data is structured as follows:
 
 | Key    | Value                                                                              |
@@ -172,11 +179,11 @@ This endpoint is responsable for the medal types in the database. The received d
 | name   | Name of medal or 'NA' if no medal was gifted                                       |
 
 ## Demo
----
+
 A live demo is live at ********. Contact me at [contato@joelschutz.com.br](mailto:contato@joelschutz.com.br) for credentials if you need it.
 
 ## License
----
+
 Distributed under the MIT License. See LICENSE for more information.
 
 This license only applies to the code in this repository. Contact the the creators about the dataset license.
