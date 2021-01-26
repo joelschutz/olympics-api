@@ -87,13 +87,10 @@ class Game(models.Model):
     class Meta:
         verbose_name = "Game"
         verbose_name_plural = "Games"
-
-    @property
-    def name(self):
+        
+    def __str__(self):
         return f'{self.year} {self.season}'
 
-    def __str__(self):
-        return self.name
 
 class Sport(models.Model):
     """

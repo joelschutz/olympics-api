@@ -28,7 +28,6 @@ class GameSerializer(ModelSerializer):
         fields = [
             'id',
             'year',
-            'name',
             'season',
             'city'
             ]
