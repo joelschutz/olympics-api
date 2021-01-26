@@ -3,6 +3,8 @@ from .models import Event
 
 class EventFilter(FilterSet):
     sport = NumberFilter('competition__sport__id')
+    season = CharFilter('game__season')
+    year = NumberFilter('game__year')
     class Meta:
         model = Event
         fields = ['athlete',
@@ -12,4 +14,6 @@ class EventFilter(FilterSet):
         'game',
         'sport',
         'competition',
+        'year',
+        'season',
         'medal']
