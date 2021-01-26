@@ -8,13 +8,13 @@ Create a virtual enviroment, clone this repository and install dependecies (on l
 ```bash
 python3 -m venv olympics-api
 source olympics-api/bin/activate
-git clone ***************
+git clone https://github.com/joelschutz/olympics-api.git
 pip install requeriments.txt
 ```
 
 Initialize the database and create superuser. Make sure to edit the database preferencies in the settings.py file if you don't intend to use it woth sqlite:
 ```bash
-cd ********
+cd olympics-api
 python manage.py migrate
 python manage.py createsuperuser # You will be prompt to define a username and password
 python manage.py drf_create_token your-username # This keep this token secret
@@ -49,11 +49,11 @@ Each endpoint will provide give access to an especific part of the data structur
 
 You can create new instances of a datastucture using the POST method. This example will create a new medal with the name "Foo":
 ```bash
-curl -X POST -H "Content-Type: application/json" -H 'Authorization: Token c4bf8a5e81c0d6d6c0e2f2b6ead507a90fcf73eb' -d '{"name":"Foo"}' http://127.0.0.1:8000/medals/
+curl -X POST -H "Content-Type: application/json" -H 'Authorization: Token your-token' -d '{"name":"Foo"}' http://127.0.0.1:8000/medals/
 ```
 To interact with a particular instance in the database o must include its id after the endpoint. This example will delete the previously created medal:
 ```bash
-curl -X DELETE -H "Content-Type: application/json" -H 'Authorization: Token c4bf8a5e81c0d6d6c0e2f2b6ead507a90fcf73eb' http://127.0.0.1:8000/medals/5/
+curl -X DELETE -H "Content-Type: application/json" -H 'Authorization: Token your-token' http://127.0.0.1:8000/medals/5/
 ```
 
 The allowed method are:
