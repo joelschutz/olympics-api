@@ -3,9 +3,11 @@ astroid==2.4.2
 Django==3.1.5
 django-filter==2.4.0
 djangorestframework==3.12.2
+gunicorn==20.0.4
 isort==5.7.0
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
+mysqlclient==2.0.3
 pylint==2.6.0
 pytz==2020.5
 six==1.15.0
