@@ -3,7 +3,7 @@ from api.models import Athlete, NOC, Game, Sport, Event, Competition, Medal
 from csv import reader
 
 class Command(BaseCommand):
-    help = 'Import NOCs from .csv file'
+    help = 'Import Events from .csv file'
 
     def add_arguments(self, parser):
         parser.add_argument('filename', type=str, help='The .csv filename containing the NOC information')
