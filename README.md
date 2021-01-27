@@ -180,7 +180,7 @@ This endpoint is responsable for the medal types in the database. The received d
 
 ## Demo
 
-A live demo is live at ********. Contact me at [contato@joelschutz.com.br](mailto:contato@joelschutz.com.br) for credentials if you need it.
+A live demo is live at [olympics-api-jss.herokuapp.com](https://olympics-api-jss.herokuapp.com/). Contact me at [contato@joelschutz.com.br](mailto:contato@joelschutz.com.br) for credentials if you need it.
 
 ## License
 
