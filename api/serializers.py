@@ -2,6 +2,9 @@ from rest_framework.serializers import ModelSerializer, ValidationError
 from .models import Athlete, NOC, Game, Sport, Event, Competition, Medal
 
 class AthleteSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Athlete Model
+    """
     class Meta:
         model = Athlete
         fields = [
@@ -13,6 +16,9 @@ class AthleteSerializer(ModelSerializer):
             ]
 
 class NOCSerializer(ModelSerializer):
+    """
+    This is a Serializer for the NOC Model
+    """
     class Meta:
         model = NOC
         fields = [
@@ -23,6 +29,9 @@ class NOCSerializer(ModelSerializer):
             ]
 
 class GameSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Game Model
+    """
     class Meta:
         model = Game
         fields = [
@@ -33,6 +42,9 @@ class GameSerializer(ModelSerializer):
             ]
 
 class SportSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Sport Model
+    """
     class Meta:
         model = Sport
         fields = [
@@ -41,6 +53,9 @@ class SportSerializer(ModelSerializer):
             ]
 
 class CompetitionSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Competition Model. It also implements custom create() and update() methods to interact with nested objects.
+    """
     sport = SportSerializer(many=False)
 
     class Meta:
@@ -80,6 +95,9 @@ class CompetitionSerializer(ModelSerializer):
         return competition
 
 class MedalSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Medal Model
+    """
     class Meta:
         model = Medal
         fields = [
@@ -88,6 +106,9 @@ class MedalSerializer(ModelSerializer):
             ]
 
 class EventSerializer(ModelSerializer):
+    """
+    This is a Serializer for the Athlete Model. It also implements custom create() and update() methods to interact with nested objects.
+    """
     athlete = AthleteSerializer(many=False)
     athlete_NOC = NOCSerializer(many=False)
     game = GameSerializer(many=False)

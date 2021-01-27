@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Athlete(models.Model):
     """
-    Represents an olympic Athlete
+    Represents an Olympic Athlete
     """
     name = models.CharField(
         blank=False,
@@ -38,7 +38,7 @@ class Athlete(models.Model):
 
 class NOC(models.Model):
     """
-    Represents an olympic NOC
+    Represents an Olympic NOC
     """
     noc = models.CharField(
         blank=False,
@@ -67,7 +67,7 @@ class NOC(models.Model):
 
 class Game(models.Model):
     """
-    Represents an olympic Game
+    Represents an Olympic Game
     """
     year = models.IntegerField(
         blank=False,
@@ -94,7 +94,7 @@ class Game(models.Model):
 
 class Sport(models.Model):
     """
-    Represents an olympic Sport
+    Represents an Olympic Sport
     """
     name = models.CharField(
         blank=False,
@@ -111,7 +111,7 @@ class Sport(models.Model):
 
 class Competition(models.Model):
     """
-    Represents an olympic Competition
+    Represents an Olympic Competition
     """
     name = models.CharField(
         blank=False,
@@ -150,7 +150,7 @@ class Medal(models.Model):
 
 class Event(models.Model):
     """
-    Represents an olympic Event
+    Represents an Olympic Event
     """
     athlete = models.ForeignKey(
         'Athlete',
