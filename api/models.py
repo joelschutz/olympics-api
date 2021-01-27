@@ -8,7 +8,7 @@ class Athlete(models.Model):
     name = models.CharField(
         blank=False,
         null=False,
-        max_length=30
+        max_length=50
         )
     sex = models.CharField(
         blank=False,
@@ -48,12 +48,12 @@ class NOC(models.Model):
     region = models.CharField(
         blank=False,
         null=False,
-        max_length=30
+        max_length=40
         )
     notes = models.CharField(
         blank=True,
         null=True,
-        max_length=30
+        max_length=40
         )
 
     class Meta:
@@ -81,7 +81,7 @@ class Game(models.Model):
     city = models.CharField(
         blank=False,
         null=False,
-        max_length=30
+        max_length=40
         )
 
     class Meta:
@@ -99,7 +99,7 @@ class Sport(models.Model):
     name = models.CharField(
         blank=False,
         null=False,
-        max_length=20
+        max_length=30
         )
 
     class Meta:
@@ -166,7 +166,7 @@ class Event(models.Model):
     athlete_team = models.CharField(
         blank=False,
         null=False,
-        max_length=30
+        max_length=40
         )
     athlete_NOC = models.ForeignKey(
         'NOC',
