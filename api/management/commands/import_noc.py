@@ -19,13 +19,16 @@ class Command(BaseCommand):
 
                     if noc == 'SIN': noc = 'SGP' # Correcting spelling bug in the dataset 
 
-                    obj = NOC(
+                    obj, created= NOC.objects.get_or_create(
                         noc=noc,
                         region=region,
                         notes=notes
                         )
-                    obj.save()
-                    print(f'{obj} saved!')
+                    if created: 
+                        obj.save()
+                        print(f'{obj} saved!')
+                    else:
+                        print(f'{obj} already saved!')
         except FileNotFoundError as e:
             raise CommandError(e)
         
