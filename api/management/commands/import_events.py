@@ -10,14 +10,31 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         filename = kwargs['filename']
+        events = Event.objects.select_related(
+        'athlete',
+        'athlete_NOC',
+        'game',
+        'competition',
+        'medal'
+    )
+        event_list = list(events.values_list('id', flat=True))
+        athletes = Athlete.objects.all()
+        games = Game.objects.all()
+        sports = Sport.objects.all()
+        competitions = Competition.objects.select_related('sport')
+        medals= Medal.objects.all()
+        nocs = NOC.objects.all()
         try:
             with open(filename) as file:
                 r = reader(file)
-                for row in r:
+                for n, row in enumerate(r):
                     pk, name, sex, age, height, weight, team, noc, game, year, season, city, sport, competition, medal = row
                     if pk == 'ID': continue
-
-                    athlete, created = Athlete.objects.get_or_create(
+                    if event_list and (n == event_list[0]): 
+                        print(f'Event {n} already saved!')
+                        event_list.pop(0)
+                        continue
+                    athlete, created = athletes.get_or_create(
                         pk=pk,
                         name=name,
                         sex=sex,
@@ -26,28 +43,28 @@ class Command(BaseCommand):
                         )
                     if created: athlete.save()
 
-                    noc = NOC.objects.get(noc=noc)
+                    noc = nocs.get(noc=noc)
 
-                    game, created = Game.objects.get_or_create(
+                    game, created = games.get_or_create(
                         year=year,
                         season=season,
                         city=city
                         )
                     if created: game.save()
 
-                    sport, created = Sport.objects.get_or_create(name=sport)
+                    sport, created = sports.get_or_create(name=sport)
                     if created: sport.save()
 
-                    competition, created = Competition.objects.get_or_create(
+                    competition, created = competitions.get_or_create(
                         name=competition,
                         sport=sport
                         )
                     if created: competition.save()
 
-                    medal, created = Medal.objects.get_or_create(name=medal)
+                    medal, created = medals.get_or_create(name=medal)
                     if created: medal.save()
                     
-                    event, created = Event.objects.get_or_create(
+                    event, created = events.get_or_create(
                         athlete=athlete,
                         athlete_age=age if age != 'NA' else None,
                         athlete_team=team,
@@ -58,9 +75,9 @@ class Command(BaseCommand):
                     )
                     if created: 
                         event.save()
-                        print(f'{event} saved!')
+                        print(f'Event {n} saved!')
                     else:
-                        print(f'{event} already saved!')
+                        print(f'Event {n} already saved!')
         except FileNotFoundError as e:
             raise CommandError(e)
         
