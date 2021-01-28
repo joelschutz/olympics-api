@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 class Athlete(models.Model):
     """
-    Represents an Olympic Athlete
+    Represents an olympic Athlete
     """
     name = models.CharField(
         blank=False,
         null=False,
-        max_length=50
+        max_length=100
         )
     sex = models.CharField(
         blank=False,
@@ -38,7 +38,7 @@ class Athlete(models.Model):
 
 class NOC(models.Model):
     """
-    Represents an Olympic NOC
+    Represents an olympic NOC
     """
     noc = models.CharField(
         blank=False,
@@ -48,12 +48,12 @@ class NOC(models.Model):
     region = models.CharField(
         blank=False,
         null=False,
-        max_length=40
+        max_length=100
         )
     notes = models.CharField(
         blank=True,
         null=True,
-        max_length=40
+        max_length=100
         )
 
     class Meta:
@@ -67,7 +67,7 @@ class NOC(models.Model):
 
 class Game(models.Model):
     """
-    Represents an Olympic Game
+    Represents an olympic Game
     """
     year = models.IntegerField(
         blank=False,
@@ -81,7 +81,7 @@ class Game(models.Model):
     city = models.CharField(
         blank=False,
         null=False,
-        max_length=40
+        max_length=100
         )
 
     class Meta:
@@ -94,12 +94,12 @@ class Game(models.Model):
 
 class Sport(models.Model):
     """
-    Represents an Olympic Sport
+    Represents an olympic Sport
     """
     name = models.CharField(
         blank=False,
         null=False,
-        max_length=30
+        max_length=100
         )
 
     class Meta:
@@ -111,7 +111,7 @@ class Sport(models.Model):
 
 class Competition(models.Model):
     """
-    Represents an Olympic Competition
+    Represents an olympic Competition
     """
     name = models.CharField(
         blank=False,
@@ -150,7 +150,7 @@ class Medal(models.Model):
 
 class Event(models.Model):
     """
-    Represents an Olympic Event
+    Represents an olympic Event
     """
     athlete = models.ForeignKey(
         'Athlete',
@@ -166,7 +166,7 @@ class Event(models.Model):
     athlete_team = models.CharField(
         blank=False,
         null=False,
-        max_length=40
+        max_length=100
         )
     athlete_NOC = models.ForeignKey(
         'NOC',
