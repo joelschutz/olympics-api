@@ -22,8 +22,7 @@ from .filters import EventFilter
 
 class EventViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Event Model. See /events in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Event.objects.select_related(
@@ -38,8 +37,7 @@ class EventViewSet(ModelViewSet):
 
 class NOCViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the NOC Model. See /nocs in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = NOC.objects.all()
@@ -53,8 +51,7 @@ class NOCViewSet(ModelViewSet):
 
 class SportViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Sport Model. See /sports in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Sport.objects.all()
@@ -63,8 +60,7 @@ class SportViewSet(ModelViewSet):
 
 class AthleteViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Athlete Model. See /athletes in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Athlete.objects.all()
@@ -78,8 +74,7 @@ class AthleteViewSet(ModelViewSet):
 
 class GameViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Game Model. See /games in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Game.objects.all()
@@ -92,8 +87,7 @@ class GameViewSet(ModelViewSet):
 
 class CompetitionViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Competition Model. See /competitions in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Competition.objects.select_related('sport')
@@ -102,8 +96,7 @@ class CompetitionViewSet(ModelViewSet):
 
 class MedalViewSet(ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
+    This is a ViewSet for the Medal Model. See /medals in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
     queryset = Medal.objects.all()
