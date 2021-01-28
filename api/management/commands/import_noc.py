@@ -25,7 +25,7 @@ class Command(BaseCommand):
                         notes=notes
                         )
                     if created: 
-                    print(f'{obj} saved!')	                        obj.save()
+                        obj.save()
                         print(f'{obj} saved!')
                     else:
                         print(f'{obj} already saved!')

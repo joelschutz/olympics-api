@@ -25,7 +25,13 @@ class EventViewSet(ModelViewSet):
     This is a ViewSet for the Event Model. See /events in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
-    queryset = Event.objects.all()
+    queryset = Event.objects.select_related(
+        'athlete',
+        'athlete_NOC',
+        'game',
+        'competition',
+        'medal'
+    )
     serializer_class = EventSerializer
     filterset_class = EventFilter
 
@@ -84,7 +90,7 @@ class CompetitionViewSet(ModelViewSet):
     This is a ViewSet for the Competition Model. See /competitions in https://github.com/joelschutz/olympics-api/blob/master/README.md for more info.
     """
 
-    queryset = Competition.objects.all()
+    queryset = Competition.objects.select_related('sport')
     serializer_class = CompetitionSerializer
     filterset_fields = ('id', 'name', 'sport')
 
