@@ -26,7 +26,13 @@ class EventViewSet(ModelViewSet):
     `update` and `destroy` actions.
     """
 
-    queryset = Event.objects.all()
+    queryset = Event.objects.select_related(
+        'athlete',
+        'athlete_NOC',
+        'game',
+        'competition',
+        'medal'
+    )
     serializer_class = EventSerializer
     filterset_class = EventFilter
 
@@ -90,7 +96,7 @@ class CompetitionViewSet(ModelViewSet):
     `update` and `destroy` actions.
     """
 
-    queryset = Competition.objects.all()
+    queryset = Competition.objects.select_related('sport')
     serializer_class = CompetitionSerializer
     filterset_fields = ('id', 'name', 'sport')
 
